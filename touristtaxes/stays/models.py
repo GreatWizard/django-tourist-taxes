@@ -43,6 +43,7 @@ class Stay(models.Model):
     children = models.IntegerField(default=0)
     date_begin = models.DateField()
     date_end = models.DateField()
+    is_validated = models.BooleanField(default=False)
 
     def __str__(self):
         return '%s in %s from %s to %s (%s adults, %s children)' % (
