@@ -1,9 +1,10 @@
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Resident, Stay
 import datetime
 
 
-class StayListView(generic.ListView):
+class StayListView(LoginRequiredMixin, generic.ListView):
     model = Stay
 
     def get_queryset(self):

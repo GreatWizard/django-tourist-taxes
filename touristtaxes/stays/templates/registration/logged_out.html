@@ -3,7 +3,7 @@
 
 {% block head_title %}{% trans 'Logged out!' %}{% endblock %}
 
-{% block body_user_is_authenticated %}
+{% block body %}
   <p>{% trans "Logged out!" %}</p>
 
   <a href="{% url 'login'%}">{% trans "Click here to login again." %}</a>

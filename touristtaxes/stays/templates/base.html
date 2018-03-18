@@ -64,15 +64,7 @@
               {% endfor %}
             </ul>
           {% endif %}
-          {% block body_user_is_authenticated %}
-            {% if user.is_authenticated %}
-              {% block body %}{% endblock %}
-            {% else %}
-              <script>
-                window.location = "{% url 'login'%}?next={{request.path}}";
-              </script>
-            {% endif %}
-          {% endblock %}
+          {% block body %}{% endblock %}
         </section>
       {% endblock %}
       {% block footer_base %}
