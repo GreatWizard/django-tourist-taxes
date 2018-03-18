@@ -1,12 +1,12 @@
-{% extends "admin/base.html" %}
+{% extends "base.html" %}
 
-{% block content %}
+{% block head_title %}Tourist Taxes{% endblock %}
+
+{% block body %}
   <h1>Welcome</h1>
-  <h2>Dynamic content</h2>
-  <p>The application has the following record counts:</p>
+  <p>Your account has the following record counts:</p>
     <ul>
       <li><strong>Locations:</strong> {{ num_location }}</li>
-      <li><strong>Owners:</strong> {{ num_owner }}</li>
       <li><strong>Stays:</strong> {{ num_stay }}</li>
     </ul>
   </p>

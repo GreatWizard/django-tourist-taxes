@@ -1,7 +1,10 @@
-{% extends "admin/base.html" %}
+{% extends "base.html" %}
+{% load i18n %}
 
-{% block content %}
-  <p>Logged out!</p>
+{% block head_title %}{% trans 'Logged out!' %}{% endblock %}
 
-  <a href="{% url 'login'%}">Click here to login again.</a>
+{% block body_user_is_authenticated %}
+  <p>{% trans "Logged out!" %}</p>
+
+  <a href="{% url 'login'%}">{% trans "Click here to login again." %}</a>
 {% endblock %}
