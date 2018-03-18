@@ -6,6 +6,7 @@
     <table>
       <thead>
         <tr>
+          <th>Location</th>
           <th>Begin</th>
           <th>End </th>
           <th>Adults</th>
@@ -15,6 +16,7 @@
       <tbody>
         {% for model in stay_list %}
           <tr>
+            <td>{{model.location}}</td>
             <td>{{model.date_begin}}</td>
             <td>{{model.date_end}}</td>
             <td>{{model.adults}}</td>

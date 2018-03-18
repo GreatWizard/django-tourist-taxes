@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Location, Owner, Stay
+from .models import Location, Resident, Stay
 
 admin.site.register(Location)
-admin.site.register(Owner)
+admin.site.register(Resident)
 admin.site.register(Stay)
