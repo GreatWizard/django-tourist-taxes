@@ -1,45 +1,18 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block body %}
-  <h1>Stays</h1>
+  <h1>{% trans 'Stays' %}</h1>
   {% if stay_list %}
-    <h2>Draft Stays</h2>
+    <h2>{% trans 'Draft Stays' %}</h2>
     <table>
       <thead>
         <tr>
-          <th>Location</th>
-          <th>Begin</th>
-          <th>End </th>
-          <th>Adults</th>
-          <th>Children</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for model in stay_list %}
-          <tr>
-            <td>{{model.location}}</td>
-            <td>{{model.date_begin}}</td>
-            <td>{{model.date_end}}</td>
-            <td>{{model.adults}}</td>
-            <td>{{model.children}}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-   </table>
-  {% else %}
-    <p>There are no stays to validate.</p>
-  {% endif %}
-
-  {% if stay_list_validated %}
-    <h2>Validated Stays</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Location</th>
-          <th>Begin</th>
-          <th>End </th>
-          <th>Adults</th>
-          <th>Children</th>
+          <th>{% trans 'Location' %}</th>
+          <th>{% trans 'Begin' %}</th>
+          <th>{% trans 'End' %}</th>
+          <th>{% trans 'Adults' %}</th>
+          <th>{% trans 'Children' %}</th>
         </tr>
       </thead>
       <tbody>
@@ -55,6 +28,32 @@
       </tbody>
     </table>
   {% else %}
-    <p>There are no stays to validate.</p>
+    <p>{% trans 'There are no stays to validate.' %}</p>
+  {% endif %}
+
+  {% if stay_list_validated %}
+    <h2>{% trans 'Validated Stays' %}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{% trans 'Location' %}</th>
+          <th>{% trans 'Begin' %}</th>
+          <th>{% trans 'End' %}</th>
+          <th>{% trans 'Adults' %}</th>
+          <th>{% trans 'Children' %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for model in stay_list %}
+          <tr>
+            <td>{{model.location}}</td>
+            <td>{{model.date_begin}}</td>
+            <td>{{model.date_end}}</td>
+            <td>{{model.adults}}</td>
+            <td>{{model.children}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   {% endif %}
 {% endblock %}
