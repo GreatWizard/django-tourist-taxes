@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h1>Stays</h1>
+  {% if stay_list %}
+    <table>
+      <thead>
+        <tr>
+          <th>Begin</th>
+          <th>End </th>
+          <th>Adults</th>
+          <th>Children</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for model in stay_list %}
+          <tr>
+            <td>{{model.date_begin}}</td>
+            <td>{{model.date_end}}</td>
+            <td>{{model.adults}}</td>
+            <td>{{model.children}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+   </table>
+  {% else %}
+    <p>There are no stays.</p>
+  {% endif %}
+{% endblock %}
