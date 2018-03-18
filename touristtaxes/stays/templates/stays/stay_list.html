@@ -5,28 +5,7 @@
   <h1>{% trans 'Stays' %}</h1>
   {% if stay_list %}
     <h2>{% trans 'Draft Stays' %}</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>{% trans 'Location' %}</th>
-          <th>{% trans 'Begin' %}</th>
-          <th>{% trans 'End' %}</th>
-          <th>{% trans 'Adults' %}</th>
-          <th>{% trans 'Children' %}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for model in stay_list %}
-          <tr>
-            <td>{{model.location}}</td>
-            <td>{{model.date_begin}}</td>
-            <td>{{model.date_end}}</td>
-            <td>{{model.adults}}</td>
-            <td>{{model.children}}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {% include "stays/_table_list.html" with stay_list=stay_list %}
     <form action="{% url 'stays--validate-all' %}" method="post">
       {% csrf_token %}
       <input type="submit" value="{% trans 'Validate All' %}" />
@@ -37,27 +16,6 @@
 
   {% if stay_list_validated %}
     <h2>{% trans 'Validated Stays' %}</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>{% trans 'Location' %}</th>
-          <th>{% trans 'Begin' %}</th>
-          <th>{% trans 'End' %}</th>
-          <th>{% trans 'Adults' %}</th>
-          <th>{% trans 'Children' %}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for model in stay_list_validated %}
-          <tr>
-            <td>{{model.location}}</td>
-            <td>{{model.date_begin}}</td>
-            <td>{{model.date_end}}</td>
-            <td>{{model.adults}}</td>
-            <td>{{model.children}}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {% include "stays/_table_list.html" with stay_list=stay_list_validated %}
   {% endif %}
 {% endblock %}

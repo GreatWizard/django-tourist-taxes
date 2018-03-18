@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<table>
+  <thead>
+    <tr>
+      <th>{% trans 'Location' %}</th>
+      <th>{% trans 'Begin' %}</th>
+      <th>{% trans 'End' %}</th>
+      <th>{% trans 'Adults' %}</th>
+      <th>{% trans 'Children' %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for model in stay_list %}
+      <tr>
+        <td>{{model.location}}</td>
+        <td>{{model.date_begin}}</td>
+        <td>{{model.date_end}}</td>
+        <td>{{model.adults}}</td>
+        <td>{{model.children}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
