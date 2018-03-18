@@ -27,6 +27,10 @@
         {% endfor %}
       </tbody>
     </table>
+    <form action="{% url 'stays--validate-all' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="{% trans 'Validate All' %}" />
+    </form>
   {% else %}
     <p>{% trans 'There are no stays to validate.' %}</p>
   {% endif %}
@@ -44,7 +48,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for model in stay_list %}
+        {% for model in stay_list_validated %}
           <tr>
             <td>{{model.location}}</td>
             <td>{{model.date_begin}}</td>
