@@ -4,7 +4,7 @@
 {% block body %}
   <h1>{% trans 'Stays' %}</h1>
 
-  <form action="{% url 'stays--form' %}" method="post">
+  <form action="{% url 'stays--post' %}" method="post">
     {% csrf_token %}
     <button id="button--stay-form">
       {% trans 'Add a stay' %}
