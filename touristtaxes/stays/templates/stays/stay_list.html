@@ -3,19 +3,69 @@
 
 {% block body %}
   <h1>{% trans 'Stays' %}</h1>
+
+  <form action="{% url 'stays--form' %}" method="post">
+    {% csrf_token %}
+    <button id="button--stay-form">
+      {% trans 'Add a stay' %}
+      <i class="fas fa-angle-double-down"></i>
+    </button>
+    <div id="stay-form" class="hidden">
+      {{form}}
+      <button type="submit" class="button button-primary" />
+        <i class="fas fa-plus"></i>
+        {% trans 'Add' %}
+      </button>
+    </div>
+  </form>
+
   {% if stay_list %}
     <h2>{% trans 'Draft Stays' %}</h2>
     {% include "stays/_table_list.html" with stay_list=stay_list %}
     <form action="{% url 'stays--validate-all' %}" method="post">
       {% csrf_token %}
-      <input type="submit" value="{% trans 'Validate All' %}" />
+      <button type="submit" class="button button-primary" />
+        <i class="fas fa-check"></i>
+        {% trans 'Validate All' %}
+      </button>
     </form>
   {% else %}
-    <p>{% trans 'There are no stays to validate.' %}</p>
+    <p>{% trans 'Do you have any stays to add?' %}</p>
   {% endif %}
 
   {% if stay_list_validated %}
     <h2>{% trans 'Validated Stays' %}</h2>
     {% include "stays/_table_list.html" with stay_list=stay_list_validated %}
   {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(function() {
+      $('#button--stay-form').click(function() {
+        if ($('#stay-form').is(':hidden')) {
+          $('#stay-form')
+            .css('opacity', 0)
+            .slideDown()
+            .animate(
+              { opacity: 1 },
+              { queue: false }
+            );
+          $('#button--stay-form i')
+            .removeClass('fa-angle-double-down')
+            .addClass('fa-angle-double-up');
+        } else {
+          $('#stay-form')
+            .slideUp()
+            .animate(
+              { opacity: 0 },
+              { queue: false }
+            );
+          $('#button--stay-form i')
+            .removeClass('fa-angle-double-up')
+            .addClass('fa-angle-double-down');
+        }
+      });
+    });
+  </script>
 {% endblock %}
